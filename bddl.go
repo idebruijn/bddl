@@ -1,4 +1,4 @@
-package bdd
+package bddl
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 	"github.com/wsxiaoys/terminal/color"
 )
 
-func bdd(t *testing.T, lead string, args ...interface{}) {
+func bddl(t *testing.T, lead string, args ...interface{}) {
 	var msg bytes.Buffer
 	fmt.Fprint(&msg, color.Sprintf("@{g}%s ", lead))
 	for i, each := range args {
