@@ -6,7 +6,6 @@ Use the dot import so you can write you bddl in a given-when-then style.
 You can also add as much parameters as you want and they wil show up in your terminal with a different color.
 
 Example
-
 var email := example@bddl.com
 var password := password123
 
