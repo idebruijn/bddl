@@ -22,27 +22,27 @@ func bddl(t *testing.T, lead string, args ...interface{}) {
 }
 
 func Feature(t *testing.T, args ...interface{}) {
-	bdd(t, "Feature:", args...)
+	bddl(t, "Feature:", args...)
 }
 
 func Scenario(t *testing.T, args ...interface{}) {
-	bdd(t, "Scenario:", args...)
+	bddl(t, "Scenario:", args...)
 }
 
 func Given(t *testing.T, args ...interface{}) {
-	bdd(t, "Given", args...)
+	bddl(t, "Given", args...)
 }
 
 func When(t *testing.T, args ...interface{}) {
-	bdd(t, " When", args...)
+	bddl(t, " When", args...)
 }
 
 func Then(t *testing.T, args ...interface{}) {
-	bdd(t, " Then", args...)
+	bddl(t, " Then", args...)
 }
 
 func And(t *testing.T, args ...interface{}) {
-	bdd(t, "  and", args...)
+	bddl(t, "  and", args...)
 }
 
 func Comment(t *testing.T, comment string, args ...interface{}) {
