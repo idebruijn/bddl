@@ -8,6 +8,13 @@ You can also add as much parameters as you want and they wil show up in your ter
 #### Example:
 
 ```
+package main
+
+import (
+"testing"
+
+	. "github.com/idebruijn/bddl"
+)
 var email := example@bddl.com
 var password := password123
 
