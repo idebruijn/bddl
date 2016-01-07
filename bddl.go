@@ -8,14 +8,33 @@ import (
 	"github.com/wsxiaoys/terminal/color"
 )
 
+// PrintColorsEnabled can be changed to disable the use of terminal coloring.
+// One usecase is to add a command line flag to your test that controls its value.
+//
+//	func init() {
+//		flag.BoolVar(&bddl.PrintColorsEnabled, "color", true, "want colors?")
+//	}
+//
+//	go test -color=false
+
+var PrintColorsEnabled = true
+
 func bddl(t *testing.T, lead string, args ...interface{}) {
 	var msg bytes.Buffer
-	fmt.Fprint(&msg, color.Sprintf("@{g}%s ", lead))
-	for i, each := range args {
-		if i%2 == 0 {
-			fmt.Fprint(&msg, color.Sprintf("@{g}%v ", each))
-		} else {
-			fmt.Fprint(&msg, color.Sprintf("@{m}%v ", each))
+
+	if PrintColorsEnabled {
+		fmt.Fprint(&msg, color.Sprintf("@{g}%s ", lead))
+		for i, each := range args {
+			if i%2 == 0 {
+				fmt.Fprint(&msg, color.Sprintf("@{g}%v ", each))
+			} else {
+				fmt.Fprint(&msg, color.Sprintf("@{m}%v ", each))
+			}
+		}
+	} else {
+		fmt.Fprint(&msg, " ", lead)
+		for _, each := range args {
+			fmt.Fprint(&msg, " ", each)
 		}
 	}
 	t.Log(msg.String())
