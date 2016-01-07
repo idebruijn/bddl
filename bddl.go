@@ -65,9 +65,17 @@ func And(t *testing.T, args ...interface{}) {
 }
 
 func Comment(t *testing.T, comment string, args ...interface{}) {
-	t.Log(append(append([]interface{}{}, fmt.Sprintf(" ")+color.Sprintf("@{b}%s", "Comment:"+" "+comment)), args...)...)
+	if PrintColorsEnabled {
+		t.Log(append(append([]interface{}{}, fmt.Sprintf(" ")+color.Sprintf("@{b}%s", "Comment:"+" "+comment)), args...)...)
+	} else {
+		t.Log(append(append([]interface{}{}, "Comment:"+" "+comment), args...)...)
+	}
 }
 
 func TODO(t *testing.T, comment string, args ...interface{}) {
-	t.Log(append(append([]interface{}{}, fmt.Sprintf(" ")+color.Sprintf("@{R}%s", "TODO:"+" "+comment)), args...)...)
+	if PrintColorsEnabled {
+		t.Log(append(append([]interface{}{}, fmt.Sprintf(" ")+color.Sprintf("@{R}%s", "TODO:"+" "+comment)), args...)...)
+	} else {
+		t.Log(append(append([]interface{}{}, "Comment:"+" "+comment), args...)...)
+	}
 }
