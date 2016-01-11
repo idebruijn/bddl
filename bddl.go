@@ -3,6 +3,7 @@ package bddl
 import (
 	"bytes"
 	"fmt"
+	"os"
 	"testing"
 
 	"github.com/wsxiaoys/terminal/color"
@@ -16,8 +17,16 @@ import (
 //	}
 //
 //	go test -color=false
+//
+//  or use the environment variable
+//	TERMCOLORS=false go test
 
 var PrintColorsEnabled = true
+
+// Check for presence of the TERMCOLORS environment variable to set the TerminalColorsEnabled setting.
+func init() {
+	PrintColorsEnabled = os.Getenv("TERMCOLORS") != "false"
+}
 
 func bddl(t *testing.T, lead string, args ...interface{}) {
 	var msg bytes.Buffer
