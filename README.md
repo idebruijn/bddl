@@ -8,24 +8,27 @@ You can also add as much parameters as you want and they will show up in your te
 
 ##### Example:
 
+	package main
+
+	import (
+		"testing"
+
+		. "github.com/idebruijn/bddl"
+	)
+
+	func TestExample(t *testing.T) {
+		var email := example@bddl.com
+		var password := password123
+
+		Given(t,"I create a customer")
+		When(t,"I login with", email, "and", password)
+		Then(t, "my login was successful")
+	}
+
+Outputs (optionally with terminal colors):
+
 ```
-package main
-
-import (
-"testing"
-
-	. "github.com/idebruijn/bddl"
-)
-var email := example@bddl.com
-var password := password123
-
-Given(t,"I create a customer")
-When(t,"I login with", email, "and", password)
-Then(t, "my login was successful")
-```
-
-```
-Given I create a customer
-When I login with ezample@bddl.com and password123
-Then my login was successful
+	Given I create a customer
+	When I login with ezample@bddl.com and password123
+	Then my login was successful
 ```
